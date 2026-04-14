@@ -1,0 +1,210 @@
+/* =========================
+   BASE
+========================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto Slab', serif;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+
+  color: whitesmoke;
+  background-color: #ecbff7;
+
+  margin: 0;
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  background-image: url('../images/yayangart-background-6747383.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+main {
+  flex-grow: 1;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  padding: 0;
+  border: none;
+  background: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+address {
+  font-style: normal;
+}
+/* =========Class-customization============ */
+.container {
+  width: 100%;
+  max-width: 450px;
+  margin: auto;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.18),
+    rgba(255, 255, 255, 0.08)
+  );
+  backdrop-filter: blur(12px);
+  border-radius: 59px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  @media only screen and (min-width: 768px) {
+    max-width: 768px;
+  }
+
+  @media only screen and (min-width: 1158px) {
+    max-width: 1158px;
+  }
+}
+.title {
+  font-family: 'Comforter', serif;
+  font-size: 48px;
+  color: #49154c;
+  @media only screen and (min-width: 768px) {
+    font-size: 72px;
+  }
+
+  @media only screen and (min-width: 1440px) {
+    font-size: 100px;
+  }
+}
+.section-task {
+  padding: 38px 20px;
+}
+.strikethrough {
+  text-decoration: line-through;
+}
+.task-input {
+  background-color: transparent;
+  outline: none;
+  border-radius: 20px;
+  color: whitesmoke;
+  width: 258px;
+  padding: 12px;
+  border: 2px solid whitesmoke;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 2px rgba(126, 34, 206, 0.4);
+  @media only screen and (min-width: 768px) {
+    width: 290px;
+  }
+}
+.task-input:hover {
+  transform: scale(1.1);
+  box-shadow: 0 2px 4px rgba(126, 34, 206, 0.4);
+}
+.task-input::placeholder {
+  font-family: 'Roboto Slab', serif;
+  color: rgb(245, 245, 245, 0.8);
+}
+.controls-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 350px;
+  flex-wrap: wrap;
+  gap: 8px;
+  @media only screen and (min-width: 768px) {
+    max-width: 700px;
+  }
+
+  @media only screen and (min-width: 1440px) {
+    max-width: 750px;
+  }
+}
+
+.list-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.add {
+  font-family: 'Roboto Slab', serif;
+  padding: 12px;
+  border-radius: 20px;
+  border: none;
+  background: linear-gradient(135deg, #9966cc, #da70d6);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+
+  box-shadow: 0 2px 2px rgba(126, 34, 206, 0.3);
+  transition: all 0.3s ease;
+}
+.add:hover {
+  transform: scale(1.1);
+  box-shadow: 0 2px 4px rgba(126, 34, 206, 0.4);
+  filter: brightness(1.08);
+}
+.task-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  line-height: 1;
+}
+
+.check {
+  margin: 0;
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+}
+.btn-display-none {
+  display: none;
+}
+.remove-btn {
+  color: #49154c;
+  transition: all 0.3s ease;
+}
+.remove-btn:hover {
+  transform: scale(1.1);
+}

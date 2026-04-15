@@ -18,7 +18,8 @@ function onAddBtnTaskSubmit(event) {
   }
   const liText = `<li class="list-item">
                 <label class="task-label">
-                <input class="check" type="checkbox" />
+                <input class="check visually-hidden" type="checkbox" />
+                <span class="checkbox-span">⬜</span>
                 <span class="task-text">${inputText}</span></label>
                 <p class="remove-smile">✖️</p>
             </li>`;
@@ -29,10 +30,16 @@ function onAddBtnTaskSubmit(event) {
 }
 
 function onListTaskClick(event) {
+  const label = event.target.closest('.task-label');
+  const checkboxSpan = label.querySelector('.checkbox-span');
+  const text = label.querySelector('.task-text');
+
   if (event.target.checked) {
-    event.target.closest('.task-label').classList.add('strikethrough');
+    checkboxSpan.textContent = '☑️';
+    text.classList.add('strikethrough');
   } else {
-    event.target.closest('.task-label').classList.remove('strikethrough');
+    checkboxSpan.textContent = '⬜';
+    text.classList.remove('strikethrough');
   }
 }
 

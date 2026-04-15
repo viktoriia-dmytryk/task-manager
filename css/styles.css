@@ -71,6 +71,18 @@ address {
   font-style: normal;
 }
 /* =========Class-customization============ */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
 .container {
   width: 100%;
   max-width: 450px;
@@ -208,4 +220,14 @@ address {
 }
 .remove-btn:hover {
   transform: scale(1.1);
+}
+.checkbox-span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  font-size: 16px;
+  line-height: 1;
+  flex-shrink: 0;
 }

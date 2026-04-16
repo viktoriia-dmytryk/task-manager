@@ -10,9 +10,9 @@ const sortable = Sortable.create(refs.listTask, {
   animation: 250,
   easing: 'cubic-bezier(0.25, 1, 0.5, 1)',
 
-  ghostClass: 'sortable-ghost', // місце, куди вставиться елемент
-  chosenClass: 'sortable-chosen', // елемент, який ти взяла
-  dragClass: 'sortable-drag', // під час перетягування
+  ghostClass: 'sortable-ghost',
+  chosenClass: 'sortable-chosen',
+  dragClass: 'sortable-drag',
 });
 
 refs.formTask.addEventListener('submit', onAddBtnTaskSubmit);

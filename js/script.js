@@ -10,6 +10,7 @@ refs.formTask.addEventListener('submit', onAddBtnTaskSubmit);
 refs.listTask.addEventListener('change', onListTaskClick);
 refs.removeBtn.addEventListener('click', onRemoveBtnClick);
 refs.listTask.addEventListener('click', onListTaskClickDelete);
+
 function onAddBtnTaskSubmit(event) {
   event.preventDefault();
   const inputText = refs.inputTask.value.trim();
@@ -20,11 +21,16 @@ function onAddBtnTaskSubmit(event) {
                 <label class="task-label">
                 <input class="check visually-hidden" type="checkbox" />
                 <span class="checkbox-span">⬜</span>
-                <span class="task-text">${inputText}</span></label>
-                <p class="remove-smile">✖️</p>
+                <span class="task-text"></span></label>
+                <button class="remove-smile" type="button">✖️</button>
             </li>`;
 
   refs.listTask.insertAdjacentHTML('beforeend', liText);
+
+  const lastItem = refs.listTask.lastElementChild;
+
+  lastItem.querySelector('.task-text').textContent = inputText;
+
   refs.removeBtn.classList.remove('btn-display-none');
   refs.formTask.reset();
 }
@@ -53,7 +59,7 @@ function onRemoveBtnClick(event) {
 }
 
 function onListTaskClickDelete(event) {
-  if (event.target.nodeName !== 'P') {
+  if (event.target.nodeName !== 'BUTTON') {
     return;
   }
   if (confirm('Бажаєте видалити це завдання?')) {

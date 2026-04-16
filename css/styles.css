@@ -175,7 +175,7 @@ address {
 
 .list-item {
   display: flex;
-  gap: 4px;
+  gap: 8px;
   align-items: center;
   justify-content: center;
 }
@@ -250,7 +250,17 @@ address {
   box-shadow: 0 2px 2px rgba(126, 34, 206, 0.3);
   transition: all 0.3s ease;
 }
+.modal-title {
+  font-family: 'Roboto Slab', serif;
+  font-size: 22px;
+  font-weight: 600;
+  text-align: center;
 
+  color: whitesmoke;
+
+  padding: 8px 12px;
+  letter-spacing: 0.03em;
+}
 .modal-btn-for-style:hover {
   transform: scale(1.1);
   box-shadow: 0 2px 4px rgba(126, 34, 206, 0.4);
@@ -284,9 +294,4 @@ address {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   cursor: grabbing;
   transition: none;
-}
-
-/* щоб курсор був красивий */
-.list-item {
-  will-change: transform;
 }

@@ -269,3 +269,24 @@ address {
   border-radius: 12px;
   max-width: 90%;
 }
+/* місце вставки */
+.sortable-ghost {
+  opacity: 0.3;
+  background: rgb(73, 21, 76, 0.4);
+  border-radius: 2px;
+  box-shadow: 0 0 15px rgba(73, 21, 76, 0.6);
+  filter: blur(1px);
+}
+
+/* елемент під час drag */
+.sortable-drag {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  cursor: grabbing;
+  transition: none;
+}
+
+/* щоб курсор був красивий */
+.list-item {
+  will-change: transform;
+}

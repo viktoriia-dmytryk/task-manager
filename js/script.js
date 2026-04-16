@@ -6,6 +6,15 @@ const refs = {
   removeBtn: document.querySelector('.remove-btn'),
 };
 
+const sortable = Sortable.create(refs.listTask, {
+  animation: 250,
+  easing: 'cubic-bezier(0.25, 1, 0.5, 1)',
+
+  ghostClass: 'sortable-ghost', // місце, куди вставиться елемент
+  chosenClass: 'sortable-chosen', // елемент, який ти взяла
+  dragClass: 'sortable-drag', // під час перетягування
+});
+
 refs.formTask.addEventListener('submit', onAddBtnTaskSubmit);
 refs.listTask.addEventListener('change', onListTaskClick);
 refs.removeBtn.addEventListener('click', onRemoveBtnClick);
@@ -36,6 +45,9 @@ function onAddBtnTaskSubmit(event) {
 }
 
 function onListTaskClick(event) {
+  if (!event.target.classList.contains('check')) {
+    return;
+  }
   const label = event.target.closest('.task-label');
   const checkboxSpan = label.querySelector('.checkbox-span');
   const text = label.querySelector('.task-text');

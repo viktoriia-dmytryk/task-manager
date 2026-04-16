@@ -50,22 +50,42 @@ function onListTaskClick(event) {
 }
 
 function onRemoveBtnClick(event) {
-  if (!confirm('Бажаєте стерти весь список справ?')) {
-    return;
-  }
-  const allLi = document.querySelectorAll('.list-item');
-  allLi.forEach(li => li.remove());
-  refs.removeBtn.classList.add('btn-display-none');
+  removeElementModal('Бажаєте стерти весь список?', () => {
+    const allLi = document.querySelectorAll('.list-item');
+    allLi.forEach(li => li.remove());
+    refs.removeBtn.classList.add('btn-display-none');
+  });
 }
 
 function onListTaskClickDelete(event) {
   if (event.target.nodeName !== 'BUTTON') {
     return;
   }
-  if (confirm('Бажаєте видалити це завдання?')) {
+
+  removeElementModal(`Бажаєте видалити це завдання?`, () => {
     event.target.closest('.list-item').remove();
-  }
-  if (refs.listTask.children.length === 0) {
-    refs.removeBtn.classList.add('btn-display-none');
-  }
+    if (refs.listTask.children.length === 0) {
+      refs.removeBtn.classList.add('btn-display-none');
+    }
+  });
+}
+
+function removeElementModal(message, onConfirm) {
+  const modalOverlay =
+    basicLightbox.create(`<h2 class="modal-title">${message}</h2>
+    <div class="btn-box">
+      <button class="del-btn modal-btn-for-style" type="button">Так</button>
+      <button class="cancel-btn modal-btn-for-style" type="button">Ні</button>
+    </div>`);
+  modalOverlay.show();
+
+  const delBtn = document.querySelector('.del-btn');
+  const cancelBtn = document.querySelector('.cancel-btn');
+
+  cancelBtn.addEventListener('click', () => {
+    modalOverlay.close();
+  });
+  delBtn.addEventListener('click', () => {
+    (onConfirm(), modalOverlay.close());
+  });
 }

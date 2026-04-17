@@ -8,6 +8,7 @@ const refs = {
   addBtnTask: document.querySelector('.add'),
   removeBtn: document.querySelector('.remove-btn'),
   container: document.querySelector('.container'),
+  saveBtn: document.querySelector('.save-btn'),
 };
 
 // *це штука з бібліотеки з сортуванням, робить лі-шки здатними перетягуватись між собою
@@ -26,6 +27,32 @@ refs.listTask.addEventListener('change', onListTaskClick);
 refs.removeBtn.addEventListener('click', onRemoveBtnClick);
 refs.listTask.addEventListener('click', onListTaskClickDelete);
 refs.listTask.addEventListener('click', onListEdit);
+refs.saveBtn.addEventListener('click', onSaveBtn);
+refs.inputTask.addEventListener('input', onSaveInput);
+
+// *отут збереження поля введення
+const savedInput = localStorage.getItem('saveInput');
+if (savedInput) {
+  refs.inputTask.value = savedInput;
+}
+function onSaveInput(event) {
+  localStorage.setItem('saveInput', event.target.value);
+}
+// *  отут лежить все, до чого треба для збереження тасків
+const savedTask = localStorage.getItem('saveTask');
+
+if (savedTask) {
+  refs.listTask.innerHTML = savedTask;
+  refs.removeBtn.classList.remove('btn-display-none');
+  refs.saveBtn.classList.remove('btn-display-none');
+}
+
+function onSaveBtn(event) {
+  localStorage.setItem('saveTask', refs.listTask.innerHTML);
+  if (refs.listTask.children.length === 0) {
+    refs.saveBtn.classList.add('btn-display-none');
+  }
+}
 
 // *це функція події кнопки форми, додає вписаний текст в лі-шку і виводить на сторінку
 function onAddBtnTaskSubmit(event) {
@@ -49,9 +76,11 @@ function onAddBtnTaskSubmit(event) {
   const lastItem = refs.listTask.lastElementChild;
 
   lastItem.querySelector('.task-text').textContent = inputText;
-
+  refs.saveBtn.classList.remove('btn-display-none');
   refs.removeBtn.classList.remove('btn-display-none');
+
   refs.formTask.reset();
+  localStorage.removeItem('saveInput');
 }
 
 // *ця функція функція до слухача чекбокса, перекреслює текст і змінює
@@ -143,6 +172,7 @@ function onListEdit(event) {
   const listItem = event.target.closest('.list-item');
   const textForEdit = listItem.querySelector('.task-text').textContent;
   refs.inputTask.value = textForEdit;
+  localStorage.setItem('saveInput', refs.inputTask.value);
   listItem.remove();
   if (refs.listTask.children.length === 0) {
     refs.removeBtn.classList.add('btn-display-none');
